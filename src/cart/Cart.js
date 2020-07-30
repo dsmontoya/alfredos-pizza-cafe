@@ -1,10 +1,10 @@
 import React from 'react';
 import ProductList from '../products/ProductList';
 
-function Cart() {
+function Cart(props) {
   return (
     <div className="Container">
-      <ProductList />
+      <ProductList display={"inline"} products={props.products}/>
     </div>
   );
 }
