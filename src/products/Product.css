@@ -1,0 +1,40 @@
+[class*="Product"] {
+  float: left;
+  padding: 10px;
+  margin: 0;
+}
+
+.Product {
+  list-style: none;
+}
+
+.Product--display-block{
+  width: 25%;
+}
+
+.Product-name--display-block {
+  font-size: 1.5em;
+}
+
+.Product-description--display-block {
+  font-style: italic;
+  color: #71706c;
+}
+
+.Product-description--display-block, .Product-price--display-block, .Product-addToCart__button {
+  font-size: 1em;
+}
+
+.Product-image--display-block, .Product-name--display-block, .Product-price--display-block, .Product-description--display-block, .Product-addToCart, .Product-addToCart__button{
+  width: 100%;
+}
+.Product-addToCart {
+  padding: 15px 50px;
+}
+.Product-addToCart__button {
+  font-weight: bold;
+  background-color: #99081f;
+  color: white;
+  border-radius: 50px;
+  padding: 15px;
+}
