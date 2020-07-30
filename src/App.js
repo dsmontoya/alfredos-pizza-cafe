@@ -20,8 +20,8 @@ function App() {
 
   const [cartProducts, setCartProducts] = useState([]);
 
-  function handleAddToCart(id) {
-    setCartProducts([...cartProducts, {id:id}])
+  function handleAddToCart(product) {
+    setCartProducts([...cartProducts, product])
     console.log(cartProducts);
   }
 
