@@ -29,9 +29,9 @@ function App() {
     <div className="App">
       <Router>
         <header className="Header col-12">
-          <div className=" Header-title col-3">
+          <div className="col-3">
             <Link to="/">
-              <h1>Alfredo's Pizza Cafe</h1>
+              <h1 className="Header-title">Alfredo's Pizza Cafe</h1>
             </Link>
           </div>
           <div className="col-7"></div>
