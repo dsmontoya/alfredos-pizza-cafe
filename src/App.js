@@ -45,7 +45,7 @@ function App() {
         <div>
           <Switch>
             <Route path="/cart">
-              <Cart products={cartProducts} />
+              <Cart products={cartProducts} onAddToCart={handleAddToCart} />
             </Route>
             <Route path="/history">
               <History />

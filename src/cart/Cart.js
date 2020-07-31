@@ -6,7 +6,7 @@ function Cart(props) {
   const products = props.products.slice();
   var cartInfo = getCartInfo();
   const [groupedProducts, setGroupedProducts] = useState(cartInfo.products);
-  var content = (products.length > 0 ? <ProductList display={"inline"} products={groupedProducts}/>:<EmptyCart/>);
+  var content = (products.length > 0 ? <ProductList display={"inline"} onAddToCart={props.onAddToCart} products={groupedProducts}/>:<EmptyCart/>);
   
   function getCartInfo() {
     let gp = [];

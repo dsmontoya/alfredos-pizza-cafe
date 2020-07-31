@@ -34,7 +34,7 @@ function AmountControls(props) {
       <div className="Product-amountControls">
         <button className="Product-amountControls__button">-</button>
         <span className="Product-amountControls__span">{props.amount}</span>
-        <button className="Product-amountControls__button">+</button>
+        <button className="Product-amountControls__button" onClick={props.onAddToCart}>+</button>
       </div>
     )
   }
