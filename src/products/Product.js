@@ -15,7 +15,7 @@ function Product(props) {
       <div className={"Product-description--display-"+display}>
         {product.description}
       </div>
-      <AmountControls display={display} onAddToCart={() => props.onAddToCart(product)} />
+      <AmountControls amount={product.amount} display={display} onAddToCart={() => props.onAddToCart(product)} />
     </li>
   );
 }
@@ -31,7 +31,7 @@ function AmountControls(props) {
     return (
       <div className="Product-amountControls">
         <button>-</button>
-        <span>1</span>
+    <span>{props.amount}</span>
         <button>+</button>
       </div>
     )

@@ -62,6 +62,18 @@ body {
   padding-top: 0;
 }
 
+.Message--state-error {
+  width: 50%;
+  margin-left: 25%;
+  padding: 5%;
+  float: left;
+  background-color: #ff63471c;
+  color: tomato;
+  font-weight: bold;
+  border: 1px solid tomato;
+  border-radius: 10px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
