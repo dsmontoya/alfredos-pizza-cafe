@@ -9,9 +9,7 @@ function ProductList(props) {
   );
   return (
     <ul className={"ProductList--display-"+props.display}>
-      <div className="col-3"></div>
       {productList}
-      <div className="col-3"></div>
     </ul>
   );
 }

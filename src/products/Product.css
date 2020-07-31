@@ -4,12 +4,12 @@
   margin: 0;
 }
 
-.Product {
-  list-style: none;
+[class*="--display-block"][class^="Product-"] {
+  width: 100%;
 }
 
-.Product--display-block{
-  width: 25%;
+.Product {
+  list-style: none;
 }
 
 .Product-name--display-block {
@@ -25,12 +25,68 @@
   font-size: 1em;
 }
 
-.Product-image--display-block, .Product-name--display-block, .Product-price--display-block, .Product-description--display-block, .Product-addToCart, .Product-addToCart__button{
+.Product-description--display-block {
+  height: 70px;
+  overflow: hidden;
+}
+
+.Product-addToCart, .Product-addToCart__button{
   width: 100%;
 }
+
+.ProductList--display-block {
+  width: 50%;
+  margin-left: 25%;
+}
+
+.ProductList--display-inline {
+  width: 50%;
+  margin-left: 25%;
+}
+
+.Product--display-block{
+  width: 50%;
+}
+
+.Product--display-inline {
+  width: 100%;
+}
+
+.Product-image--display-inline {
+  width: 30%;
+}
+
+.Product-info--display-inline {
+  width: 50%;
+}
+
+.Product-name--display-inline, .Product-price--display-inline, .Product-description--display-inline {
+  width: 100%;
+  text-align: left;
+}
+
+.Product-amountControls {
+  width: 20%;
+  margin-top: 10%;
+  border: 1px solid;
+}
+
+.Product-amountControls__button {
+  width: 33.3%;
+  border: none;
+  background-color: white;
+  font-size: 1.5em;
+}
+
+.Product-amountControls__span {
+  width: 33.3%;
+  margin-top: 5%;
+}
+
 .Product-addToCart {
   padding: 15px 50px;
 }
+
 .Product-addToCart__button {
   font-weight: bold;
   background-color: #99081f;

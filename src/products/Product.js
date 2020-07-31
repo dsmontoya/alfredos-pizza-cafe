@@ -7,7 +7,7 @@ function Product(props) {
   return (
     <li className={"Product Product--display-"+display}>
       <img className={"Product-image--display-"+display} src={product.image} alt={product.name}/>
-
+      <div className={"Product-info--display-"+display}>
         <h2 className={"Product-name--display-"+display}>{product.name}</h2>
       <div className={"Product-price--display-"+display}>
         ${product.price}
@@ -15,7 +15,9 @@ function Product(props) {
       <div className={"Product-description--display-"+display}>
         {product.description}
       </div>
+      </div>
       <AmountControls amount={product.amount} display={display} onAddToCart={() => props.onAddToCart(product)} />
+
     </li>
   );
 }
@@ -30,9 +32,9 @@ function AmountControls(props) {
   } else if (props.display === "inline") {
     return (
       <div className="Product-amountControls">
-        <button>-</button>
-    <span>{props.amount}</span>
-        <button>+</button>
+        <button className="Product-amountControls__button">-</button>
+        <span className="Product-amountControls__span">{props.amount}</span>
+        <button className="Product-amountControls__button">+</button>
       </div>
     )
   }
