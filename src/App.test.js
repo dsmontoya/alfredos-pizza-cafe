@@ -16,6 +16,15 @@ test('updates number of products', () => {
   expect(document.getElementsByClassName('CartButton-counter')[0]).toHaveTextContent('4');
 });
 
+test('displays the total', () => {
+  render(<App />);
+
+  clickAddToCart();
+  clickCartButton();
+
+  expect(document.getElementsByClassName('Cart-purchase')[0]).toHaveTextContent('Check out ($34)');
+});
+
 test('decreases the number of products', () => {
   render(
     <MemoryRouter>

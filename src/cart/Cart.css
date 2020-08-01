@@ -1,0 +1,16 @@
+.Cart-purchase {
+  width: 50%;
+  margin-left: 25%;
+  padding: 15px 50px;
+  float: left;
+}
+
+.Cart-purchase__button {
+  width: 50%;
+  margin-left: 25%;
+  font-weight: bold;
+  background-color: #99081f;
+  color: white;
+  border-radius: 50px;
+  padding: 15px;
+}

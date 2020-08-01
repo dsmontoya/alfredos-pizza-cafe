@@ -6,10 +6,20 @@ function Cart(props) {
   const products = props.products;
   
   var content = (products.length > 0 ? <ProductList display={"inline"} onAddToCart={props.onAddToCart} onRemove={props.onRemove} products={products}/>:<EmptyCart/>);
+
+  function total() {
+    let total = 0;
+    products.forEach(product => {
+      let {amount, price} = product;
+      total += amount * price;
+    });
+    return total;
+  }
     
   return (
     <div className="Container">
      {content}
+     <PurchaseButton total={total()}/>
     </div>
   );
 }
@@ -25,7 +35,9 @@ function EmptyCart() {
 function PurchaseButton(props) {
   if (props.total > 0) {
     return(
-      <button>Check out (${props.total})</button>
+      <div className='Cart-purchase'>
+        <button className='Cart-purchase__button'>Check out (${props.total})</button>
+      </div>
     )
   }
   return null
