@@ -3,29 +3,7 @@ import ProductList from '../products/ProductList';
 import "./Cart.css"
 
 function Cart(props) {
-  const [cartInfo, setCartInfo] = useState({products:[]});
-  var products = cartInfo.products;
-  
-  function updateCartInfo(products) {
-    let gp = [];
-    let hash = {};
-    products.forEach(function(product) {
-      const id = product.id
-      if (!(id in hash)) {
-        product.amount = 1;
-        hash[id] = gp.length;
-        gp.push(product);
-      } else {
-        const idx = hash[id]
-        gp[idx].amount++
-      }
-    });
-    setCartInfo({products: gp})
-  }
-
-  useEffect(()=>{
-    updateCartInfo(props.products)
-  },[props.products])
+  const products = props.products;
   
   var content = (products.length > 0 ? <ProductList display={"inline"} onAddToCart={props.onAddToCart} onRemove={props.onRemove} products={products}/>:<EmptyCart/>);
     

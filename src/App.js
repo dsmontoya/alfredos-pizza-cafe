@@ -18,13 +18,38 @@ function App() {
     {id: 2, name:"Pepperoni", image: "pepperoni-pizza.png", description: "Olive oil, garlic, mozzarella cheese, onions, mushrooms, green olives, black olives, fresh tomatoes.", price: 7},
   ]);
 
-  const [cartProducts, setCartProducts] = useState([]);
+  const [cartHash, setCartHash] = useState({});
+  const cartProducts = hashToArray();
 
   function handleAddToCart(product) {
-    setCartProducts([...cartProducts, product])
+    console.log("handlerAddToCart",product);
+    var products = Object.assign({}, cartHash);
+    if (!(product.id in products)) {
+      product.amount = 1;
+      products[product.id] = product
+    } else {
+      products[product.id].amount++
+    }
+    setCartHash(products);
   }
 
   function handleRemove(id) {
+  }
+
+  function hashToArray() {
+    var array = [];
+    for (const key in cartHash) {
+      array.push(cartHash[key]);
+    }
+    return array;
+  }
+
+  function numberOfProducts() {
+    let amount = 0;
+    cartProducts.forEach((item) =>{
+      amount += item.amount
+    });
+    return amount
   }
 
   return (
@@ -40,7 +65,7 @@ function App() {
           <nav className="col-2">
             <ul>
               <li className="Header-item Header-history col-7"><Link to="/history">History</Link></li>
-              <li className="Header-item Header-cart col-5"><Link to="/cart"><CartButton numberOfProducts={cartProducts.length}></CartButton></Link></li>
+              <li className="Header-item Header-cart col-5"><Link to="/cart"><CartButton numberOfProducts={numberOfProducts()}></CartButton></Link></li>
             </ul>
           </nav>
         </header>
