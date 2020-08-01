@@ -3,12 +3,10 @@ import ProductList from '../products/ProductList';
 import "./Cart.css"
 
 function Cart(props) {
-  const products = props.products.slice();
-  var cartInfo = getCartInfo();
-  const [groupedProducts, setGroupedProducts] = useState(cartInfo.products);
-  var content = (products.length > 0 ? <ProductList display={"inline"} onAddToCart={props.onAddToCart} products={groupedProducts}/>:<EmptyCart/>);
+  const [cartInfo, setCartInfo] = useState({products:[]});
+  var products = cartInfo.products;
   
-  function getCartInfo() {
+  function updateCartInfo(products) {
     let gp = [];
     let hash = {};
     products.forEach(function(product) {
@@ -18,13 +16,18 @@ function Cart(props) {
         hash[id] = gp.length;
         gp.push(product);
       } else {
-          const idx = hash[id]
-          gp[idx].amount++
-        }
+        const idx = hash[id]
+        gp[idx].amount++
+      }
     });
-    console.log("gp",gp);
-    return {products: gp}
+    setCartInfo({products: gp})
   }
+
+  useEffect(()=>{
+    updateCartInfo(props.products)
+  },[props.products])
+  
+  var content = (products.length > 0 ? <ProductList display={"inline"} onAddToCart={props.onAddToCart} products={products}/>:<EmptyCart/>);
     
   return (
     <div className="Container">
