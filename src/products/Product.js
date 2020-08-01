@@ -4,20 +4,22 @@ import './Product.css';
 function Product(props) {
   const product = props.product;
   const display = props.display;
+  const controls = (props.hideControls ? null : <AmountControls amount={product.amount} display={display} onAddToCart={() => props.onAddToCart(product)} onRemove={() => props.onRemove(product.id)} />);
+  const priceText = '$' + product.price + (props.hideControls ? ' (x' + product.amount +')' : '');
+
   return (
     <li className={"Product Product--display-"+display}>
       <img className={"Product-image--display-"+display} src={product.image} alt={product.name}/>
       <div className={"Product-info--display-"+display}>
-        <h2 className={"Product-name--display-"+display}>{product.name}</h2>
+        <h3 className={"Product-name--display-"+display}>{product.name}</h3>
       <div className={"Product-price--display-"+display}>
-        ${product.price}
+        {priceText}
       </div>
       <div className={"Product-description--display-"+display}>
         {product.description}
       </div>
       </div>
-      <AmountControls amount={product.amount} display={display} onAddToCart={() => props.onAddToCart(product)} onRemove={() => props.onRemove(product.id)} />
-
+      {controls}
     </li>
   );
 }

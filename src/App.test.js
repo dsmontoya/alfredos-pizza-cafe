@@ -77,6 +77,20 @@ test('removes a product', () => {
   expect(document.getElementsByClassName('Product')).toHaveLength(1)
 });
 
+test('purchases the products', () => {
+  render(<App />);
+
+  purchase();
+
+  expect(document.getElementsByClassName('Message')[0]).toHaveTextContent('Thanks for your purchase!');
+
+  clickHistoryButton();
+  purchase();
+  clickHistoryButton();
+  
+  expect(document.getElementsByClassName('Order')).toHaveLength(2);
+});
+
 function clickAddToCart() {
   const addToCartButtons = screen.getAllByText('Add To Cart');
 
@@ -90,6 +104,21 @@ function clickCartButton() {
   fireEvent.click(document.getElementsByClassName('CartButton')[0]);
 }
 
+function clickHistoryButton(params) {
+  fireEvent.click(document.getElementsByClassName('Header-history')[0]);
+}
+
 function clickHomeButton() {
   fireEvent.click(document.getElementsByClassName('Header-title')[0]);
+}
+
+function clickPurchaseButton() {
+  fireEvent.click(document.getElementsByClassName('Cart-purchase__button')[0]);
+}
+
+function purchase(){
+  clickHomeButton();
+  clickAddToCart();
+  clickCartButton();
+  clickPurchaseButton();
 }

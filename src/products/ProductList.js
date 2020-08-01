@@ -5,7 +5,7 @@ import Product from './Product'
 function ProductList(props) {
   const products = props.products;
   const productList = products.map((product) =>
-    <Product key={product.id} product={product} display={props.display} onAddToCart={props.onAddToCart} onRemove={props.onRemove}/>
+    <Product key={product.id} product={product} display={props.display} onAddToCart={props.onAddToCart} onRemove={props.onRemove} hideControls={props.hideControls}/>
   );
   return (
     <ul className={"ProductList--display-"+props.display}>

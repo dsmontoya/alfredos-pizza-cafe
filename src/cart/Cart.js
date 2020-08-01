@@ -17,16 +17,17 @@ function Cart(props) {
   }
     
   return (
-    <div className="Container">
+    <div className="Cart">
+      <h2>Cart</h2>
      {content}
-     <PurchaseButton total={total()}/>
+     <PurchaseButton total={total()} onClick={props.onPurchase}/>
     </div>
   );
 }
 
 function EmptyCart() {
   return (
-    <div className="Message--state-error">
+    <div className="Message Message--state-error">
       Your cart is empty!
     </div>
   )
@@ -36,7 +37,7 @@ function PurchaseButton(props) {
   if (props.total > 0) {
     return(
       <div className='Cart-purchase'>
-        <button className='Cart-purchase__button'>Check out (${props.total})</button>
+        <button className='Cart-purchase__button' onClick={props.onClick}>Check out (${props.total})</button>
       </div>
     )
   }

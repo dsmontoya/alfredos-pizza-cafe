@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import CartButton from './cart/CartButton';
 import Cart from './cart/Cart';
+import Thanks from './Thanks';
 import History from './history/History';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
@@ -19,17 +21,29 @@ function App() {
   ]);
 
   const [cartHash, setCartHash] = useState({});
+  const [orderHistory, setOrderHistory] = useState([]);
   const cartProducts = hashToArray();
+  const [success, setSuccess] = useState(false);
 
   function handleAddToCart(product) {
+    const p = Object.assign({}, product);
     let products = Object.assign({}, cartHash);
-    if (!(product.id in products)) {
-      product.amount = 1;
-      products[product.id] = product
+    if (!(p.id in products)) {
+      p.amount = 1;
+      products[p.id] = p
     } else {
-      products[product.id].amount++
+      products[p.id].amount++
     }
     setCartHash(products);
+  }
+
+  function handlePurchase() {
+    const time = new Date().toISOString().slice(0, 10);
+    let order = {time: time};
+    order.products = cartProducts;
+    setOrderHistory([...orderHistory, order]);
+    setCartHash({});
+    setSuccess(true);
   }
 
   function handleRemove(id) {
@@ -73,7 +87,7 @@ function App() {
           <div className="col-7"></div>
           <nav className="col-2">
             <ul>
-              <li className="Header-item Header-history col-7"><Link to="/history">History</Link></li>
+              <li className="Header-item col-7"><Link to="/history"><span className='Header-history'>History</span></Link></li>
               <li className="Header-item Header-cart col-5"><Link to="/cart"><CartButton numberOfProducts={numberOfProducts()}></CartButton></Link></li>
             </ul>
           </nav>
@@ -81,10 +95,13 @@ function App() {
         <div>
           <Switch>
             <Route path="/cart">
-              <Cart products={cartProducts} onAddToCart={handleAddToCart} onRemove={handleRemove} />
+              {success ? <Redirect to={'/thanks'}/> : <Cart products={cartProducts} onAddToCart={handleAddToCart} onRemove={handleRemove} onPurchase={handlePurchase}/>}
             </Route>
             <Route path="/history">
-              <History />
+              <History orders={orderHistory} />
+            </Route>
+            <Route path="/thanks">
+              <Thanks onVisit={()=>{setSuccess(false)}} />
             </Route>
             <Route path="/">
               <Home products={products} onAddToCart={handleAddToCart} />

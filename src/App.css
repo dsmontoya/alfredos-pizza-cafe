@@ -20,6 +20,14 @@
   padding: 15px;
 }
 
+h2 {
+  width: 50%;
+  float: left;
+  margin-left: 25%;
+  text-align: left;
+  font-size: 2em;
+}
+
 .App {
   text-align: center;
 }
@@ -69,16 +77,25 @@
   padding-top: 0;
 }
 
-.Message--state-error {
+.Message {
   width: 50%;
   margin-left: 25%;
   padding: 5%;
+  border-radius: 10px;
   float: left;
+  font-weight: bold;
+}
+
+.Message--state-error {
   background-color: #ff63471c;
   color: tomato;
-  font-weight: bold;
   border: 1px solid tomato;
-  border-radius: 10px;
+}
+
+.Message--state-ok {
+  background-color: #d4edda;
+  color: olivedrab;
+  border: 1px solid olivedrab;
 }
 
 @keyframes App-logo-spin {
