@@ -22,7 +22,6 @@ function App() {
 
   function handleAddToCart(product) {
     setCartProducts([...cartProducts, product])
-    console.log(cartProducts);
   }
 
   function handleRemove(id) {

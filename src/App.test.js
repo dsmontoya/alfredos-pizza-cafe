@@ -1,9 +1,14 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('updates number of products', () => {
+  render(<App />)
+
+  const addToCartButtons = screen.getAllByText('Add To Cart')
+
+  fireEvent.click(addToCartButtons[0]);
+  fireEvent.click(addToCartButtons[1]);
+  
+  expect(document.getElementsByClassName('CartButton-counter')[0]).toHaveTextContent('2')
 });
