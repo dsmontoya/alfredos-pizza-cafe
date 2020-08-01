@@ -22,7 +22,7 @@ function App() {
   const cartProducts = hashToArray();
 
   function handleAddToCart(product) {
-    var products = Object.assign({}, cartHash);
+    let products = Object.assign({}, cartHash);
     if (!(product.id in products)) {
       product.amount = 1;
       products[product.id] = product
@@ -33,6 +33,16 @@ function App() {
   }
 
   function handleRemove(id) {
+    let products = Object.assign({}, cartHash);
+    if ((id in products)) {
+      let product = products[id];
+      if (product.amount === 1) {
+        delete products[id]
+      } else {
+        product.amount--;
+      }
+    }
+    setCartHash(products);
   }
 
   function hashToArray() {
