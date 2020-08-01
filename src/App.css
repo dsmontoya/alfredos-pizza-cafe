@@ -28,6 +28,17 @@ h2 {
   font-size: 2em;
 }
 
+.flex-container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.row            { 
+  -webkit-flex-direction: row; 
+  flex-direction: row;
+}
+
 .App {
   text-align: center;
 }
@@ -62,20 +73,34 @@ h2 {
   background-color: #99081f;
 }
 
+.Header-container {
+  padding: 1em;
+}
+
+.Header__nav {
+  margin-left: auto;
+}
+
+.Header h1 {
+  margin: 0;
+  padding: 0.67em;
+}
+
 .Header a {
   text-decoration: none;
   color: white;
   font-weight: bold;
 }
 
-
 .Header-item {
   list-style: none;
+  padding: 0.67em;
+  font-size: 2em;
 }
 
-.Header-cart {
+/* .Header-cart {
   padding-top: 0;
-}
+} */
 
 .Message {
   width: 50%;
@@ -104,5 +129,20 @@ h2 {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .Header-item, .Header h1 {
+    font-size: 1em;
+    padding: 0;
   }
 }

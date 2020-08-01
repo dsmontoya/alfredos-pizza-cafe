@@ -78,17 +78,16 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <header className="Header col-12">
-          <div className="col-3">
+        <header className="Header flex-container">
+          <div className="Header-container row">
             <Link to="/">
               <h1 className="Header-title">Alfredo's Pizza Cafe</h1>
             </Link>
           </div>
-          <div className="col-7"></div>
-          <nav className="col-2">
-            <ul>
-              <li className="Header-item col-7"><Link to="/history"><span className='Header-history'>History</span></Link></li>
-              <li className="Header-item Header-cart col-5"><Link to="/cart"><CartButton numberOfProducts={numberOfProducts()}></CartButton></Link></li>
+          <nav className="Header-container Header__nav row">
+            <ul className='flex-container'>
+              <li className="Header-item row"><Link to="/history"><span className='Header-history'>History</span></Link></li>
+              <li className="Header-item Header-cart row"><Link to="/cart"><CartButton numberOfProducts={numberOfProducts()}></CartButton></Link></li>
             </ul>
           </nav>
         </header>

@@ -94,3 +94,14 @@
   border-radius: 50px;
   padding: 15px;
 }
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="Product-"] {
+    width: 100%;
+  }
+  [class*="ProductList"] {
+    width: 100%;
+    margin: 0;
+  }
+}
