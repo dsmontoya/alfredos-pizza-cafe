@@ -22,7 +22,6 @@ function App() {
   const cartProducts = hashToArray();
 
   function handleAddToCart(product) {
-    console.log("handlerAddToCart",product);
     var products = Object.assign({}, cartHash);
     if (!(product.id in products)) {
       product.amount = 1;
