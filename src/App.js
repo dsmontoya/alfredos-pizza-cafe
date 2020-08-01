@@ -25,6 +25,9 @@ function App() {
     console.log(cartProducts);
   }
 
+  function handleRemove(id) {
+  }
+
   return (
     <div className="App">
       <Router>
@@ -45,7 +48,7 @@ function App() {
         <div>
           <Switch>
             <Route path="/cart">
-              <Cart products={cartProducts} onAddToCart={handleAddToCart} />
+              <Cart products={cartProducts} onAddToCart={handleAddToCart} onRemove={handleRemove} />
             </Route>
             <Route path="/history">
               <History />

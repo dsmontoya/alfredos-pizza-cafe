@@ -27,7 +27,7 @@ function Cart(props) {
     updateCartInfo(props.products)
   },[props.products])
   
-  var content = (products.length > 0 ? <ProductList display={"inline"} onAddToCart={props.onAddToCart} products={products}/>:<EmptyCart/>);
+  var content = (products.length > 0 ? <ProductList display={"inline"} onAddToCart={props.onAddToCart} onRemove={props.onRemove} products={products}/>:<EmptyCart/>);
     
   return (
     <div className="Container">

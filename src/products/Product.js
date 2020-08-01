@@ -16,7 +16,7 @@ function Product(props) {
         {product.description}
       </div>
       </div>
-      <AmountControls amount={product.amount} display={display} onAddToCart={() => props.onAddToCart(product)} />
+      <AmountControls amount={product.amount} display={display} onAddToCart={() => props.onAddToCart(product)} onRemove={() => props.onRemove(product.id)} />
 
     </li>
   );
@@ -32,7 +32,7 @@ function AmountControls(props) {
   } else if (props.display === "inline") {
     return (
       <div className="Product-amountControls">
-        <button className="Product-amountControls__button">-</button>
+        <button className="Product-amountControls__button" onClick={props.onRemove}>-</button>
         <span className="Product-amountControls__span">{props.amount}</span>
         <button className="Product-amountControls__button" onClick={props.onAddToCart}>+</button>
       </div>
